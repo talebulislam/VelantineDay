@@ -238,7 +238,7 @@ yesBtn.addEventListener("click",()=>{
   confetti({particleCount:300,spread:120,origin:{y:.65}});
 
   setTimeout(()=>{
-    alert("YAY 💕 I can’t wait for Valentine’s Day with you!");
+    document.getElementById("lovePopup").classList.add("show");
   },500);
 });
 
@@ -264,6 +264,94 @@ document.addEventListener("mousemove",e=>{
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),800);
 });
+</script>
+
+
+
+<!-- LOVE POPUP -->
+<div id="lovePopup" class="popupOverlay">
+  <div class="popupCard">
+    <div class="popupEmoji">💖</div>
+    <h3>Yayyy Puja! 💕</h3>
+    <p>I can’t wait to celebrate Valentine’s Day with you 🥰</p>
+    <button onclick="closePopup()">Close ❤️</button>
+  </div>
+</div>
+
+<style>
+/* Popup */
+.popupOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.4s ease;
+  backdrop-filter:blur(6px);
+}
+
+.popupOverlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.popupCard{
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  padding:34px 26px 30px;
+  border-radius:26px;
+  text-align:center;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+  animation:popupIn .5s ease;
+  max-width:320px;
+}
+
+@keyframes popupIn{
+  from{transform:scale(.7) translateY(40px);opacity:0}
+  to{transform:scale(1) translateY(0);opacity:1}
+}
+
+.popupEmoji{
+  font-size:52px;
+  margin-bottom:10px;
+  animation:heartbeat 1.6s infinite;
+}
+
+.popupCard h3{
+  font-family:"Great Vibes",cursive;
+  font-size:30px;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.popupCard p{
+  color:#fff;
+  font-size:15px;
+  margin-bottom:20px;
+}
+
+.popupCard button{
+  border:none;
+  padding:10px 26px;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4d6d;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.popupCard button:hover{
+  transform:scale(1.08);
+}
+</style>
+
+<script>
+function closePopup(){
+  document.getElementById("lovePopup").classList.remove("show");
+}
 </script>
 
 </body>
